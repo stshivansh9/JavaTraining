@@ -12,14 +12,11 @@ public class testStudentReportCard {
 		int tempMarks[]=new int[3];
 		for(int i=0;i<3;i++)
 		{
-			System.out.println("Enter Marks for "+i+"th subject : ");
+			System.out.println("Enter Marks for "+(i+1)+"th subject : ");
 			tempMarks[i]=scan.nextInt();
 		}
 		studentReportCard ram= new studentReportCard(tempId,tempName,tempCourse,tempMarks);
-		System.out.println(ram.name);
-		System.out.println(ram.rollNo);
-		System.out.println(ram.course);
-		System.out.println(ram.totalMarks);
+		ram.print();
 	}
 
 }

@@ -13,7 +13,7 @@ public class studentReportCard {
 	float percentage;
 	char grade;
 	
-	public studentReportCard()
+	/*public studentReportCard()
 	{
 		rollNo=1001;
 		name="jeet";
@@ -32,16 +32,18 @@ public class studentReportCard {
 		this.name=name;
 		this.course=course;
 		
-	}
+	}*/
 	public studentReportCard(int rollNo,String name,String course,int[] marks) {
-		this(rollNo,name,course);
+		//this(rollNo,name,course);
 		this.rollNo=rollNo;
 		this.name=name;
 		this.course=course;
-		for(int i = 0;i<3;i++) {
-			this.marks[i]=marks[i];
-		}
-		
+		this.marks[0]=marks[0];
+		this.marks[1]=marks[1];
+		this.marks[2]=marks[2];
+		totalMarks=calculateTotalMarks(marks);
+		percentage=calculatePercentage(totalMarks);
+		grade=calculateGrade(percentage);
 	}
 	
 	public void print() {
@@ -66,7 +68,7 @@ public class studentReportCard {
 	}
 	public float calculatePercentage(int totalMarks) {
 		int tempPercentage;
-		tempPercentage=(totalMarks/300)*100;
+		tempPercentage=totalMarks/3;
 		return tempPercentage;
 	}
 	public char calculateGrade(float percentage)
