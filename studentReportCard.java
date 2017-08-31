@@ -8,33 +8,37 @@ public class studentReportCard {
 	int rollNo;
 	String name;
 	String course;
-	int marks[]=new int[3];
 	int totalMarks;
 	float percentage;
 	char grade;
+	int noOfSubjects;
+	int[] marks=new int[100];
 	
-	/*public studentReportCard()
+	public studentReportCard()
 	{
-		rollNo=1001;
-		name="jeet";
-		course="java";
-		marks[0]=10;
-		marks[1]=10;
-		marks[2]=10;
+		rollNo=0;
+		name="Enter Name Here";
+		course="Enter Course Here";
+		this.noOfSubjects=3;
+		marks[0]=0;
+		marks[1]=0;
+		marks[2]=0;
 		totalMarks=calculateTotalMarks(marks);
 		percentage=calculatePercentage(totalMarks);
 		grade=calculateGrade(percentage);
 		
 	}
+	
 	public studentReportCard(int rollNo,String name,String course) {
 		this();
 		this.rollNo=rollNo;
 		this.name=name;
 		this.course=course;
 		
-	}*/
+	}
+	
 	public studentReportCard(int rollNo,String name,String course,int[] marks) {
-		//this(rollNo,name,course);
+		this(rollNo,name,course);
 		this.rollNo=rollNo;
 		this.name=name;
 		this.course=course;
@@ -44,6 +48,22 @@ public class studentReportCard {
 		totalMarks=calculateTotalMarks(marks);
 		percentage=calculatePercentage(totalMarks);
 		grade=calculateGrade(percentage);
+	}
+	
+	public studentReportCard(int rollNo,String name,String course,int[] marks,int noOfSubjects) {
+		this(rollNo,name,course,marks);
+		this.rollNo=rollNo;		
+		this.name=name;
+		this.course=course;
+		this.noOfSubjects=noOfSubjects;
+		for(int i=0;i<noOfSubjects;i++) {
+			this.marks[i]=marks[i];
+		}
+
+		totalMarks=calculateTotalMarks(marks);
+		percentage=calculatePercentage(totalMarks);
+		grade=calculateGrade(percentage);
+		
 	}
 	
 	public void print() {
@@ -60,7 +80,7 @@ public class studentReportCard {
 	}
 	public int calculateTotalMarks(int[] marks) {
 		int totalTemp=0;
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<noOfSubjects;i++) {
 			totalTemp+=marks[i];
 		}
 			return totalTemp;
@@ -68,7 +88,7 @@ public class studentReportCard {
 	}
 	public float calculatePercentage(int totalMarks) {
 		int tempPercentage;
-		tempPercentage=totalMarks/3;
+		tempPercentage=totalMarks/noOfSubjects;
 		return tempPercentage;
 	}
 	public char calculateGrade(float percentage)
